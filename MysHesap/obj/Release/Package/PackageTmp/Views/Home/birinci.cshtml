@@ -1,0 +1,95 @@
+﻿@model List<MysHesap.Models.birinciAsama>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>1. Aşama - Ödeme Emri Belgesi Ayrıntı HS Türü</title>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.jqueryui.min.css" type="text/css" />
+    
+    
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.jqueryui.min.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+    <br />
+<h3 style="text-align: center">Harcama ve Kesinti Türleri Seçim Tablosu</h3>
+<hr />
+<br />
+<div class="container">
+    <div class="row" >
+        <table id="birinciAsama" class="display">
+            <thead>
+            <tr>
+                <th>Ödeme Kalemi Türü</th>
+                <th>Hesap Kodu</th>
+                <th>Merkezi Bütçe Kaynaklı<br/> Ekonomik Kodu</th>
+                <th>Varlık (Taşınır Mal) Alım mı ?</th>
+                <th>Harcama Alt Türü Numarası</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var bir in Model)
+            {
+                <tr>
+                    <td>@bir.odemeKalemTuru</td>
+                    <td>@bir.hesapKodu</td>
+                    <td>@bir.merkeziButceKaynakliHesapKodu</td>
+                    <td>@bir.varlikmi</td>
+                    <td>@bir.harcamaAltTuru</td>
+                </tr>
+            }
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <br />
+        <hr />
+        <div style="float: left" class="col-md-6">@Html.ActionLink("İkinci Aşama", "Ikinci", new {}, new {@class = "btn btn-primary"})</div>
+    </div>
+
+
+</div>
+
+
+<script>
+
+    $('#birinciAsama').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
+        },
+
+        "bAutoWidth": false
+
+
+    });
+
+</script>
+
+
+
+
+</body>
+</html>

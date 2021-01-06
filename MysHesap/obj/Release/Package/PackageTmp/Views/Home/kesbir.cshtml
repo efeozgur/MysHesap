@@ -1,0 +1,95 @@
+﻿@model List<MysHesap.Models.kesintiAltTuruBirinciAsama>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>1. Aşama - Kesinti Alt Türleri</title>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.jqueryui.min.css" type="text/css" />
+
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.jqueryui.min.js"></script>
+
+
+
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="row" style="margin: 20px">
+            <table id="kesintibir" class="display">
+                <thead>
+                    <tr>
+                        <th>Kesinti Alt Türü Adı</th>
+                        <th>Kesinti Türü No</th>
+                        <th>Emanete Alınma Durumu</th>
+                        <th>Alacak Kontrolü Durumu</th>
+                        <th>Durumu</th>
+                        <th>Bütçe Türü</th>
+                        <th>Özel Bütçe Hesap Kodu</th>
+                        <th>Genel Bütçe Hesap Kodu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var bir in Model)
+                    {
+                        <tr>
+                            <td>@bir.kesintiAltTuruAdi</td>
+                            <td>@bir.KesintiTuruNo</td>
+                            <td>@bir.EmaneteAlinmaDurumu</td>
+                            <td>@bir.AlacakKontrolDurumu</td>
+                            <td>@bir.Durumu</td>
+                            <td>@bir.ButceTuru</td>
+                            <td>@bir.OzelButceHesapKodu</td>
+                            <td>@bir.GenelButceHesapKodu</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="col-md-12">
+            <div style="float:left" class="col-md-6">@Html.ActionLink("Kesinti Alt Türü (2. Aşama)", "kes2", new { }, new { @class = "btn btn-primary" })</div>
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+    $('#kesintibir').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json",
+        },
+
+        "bAutoWidth": false
+
+
+    });
+
+    </script>
+
+
+
+
+</body>
+</html>
